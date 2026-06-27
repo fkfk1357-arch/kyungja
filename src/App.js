@@ -162,7 +162,7 @@ export default function App() {
     if(!inputName.trim()){ showToast("이름을 입력해주세요",false); return; }
     var code = genCode();
     var data = {members:{}};
-    data.members[inputName] = myRecords;
+    data.members[inputName] = myRecords.length>0 ? myRecords : ["init"];
     var ok = await fbSet("rooms/"+code, data);
     if(!ok){ showToast("생성 실패. 다시 시도해주세요",false); return; }
     localStorage.setItem(ROOM_KEY,code);
